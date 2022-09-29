@@ -10,17 +10,17 @@ public class Employee {
 	private String password;
 	private String mobile;
 	private String email;
-	private Date dateOfBirth;
+	private String dateOfBirth;
 	private String address;
-	private double salary;
-	private Date hireDate;
+	private int salary;
+	private String hireDate;
 	private int departmentID;
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Employee(int id, String firstName, String lastName, String password, String mobile, String email,
-			Date dateOfBirth, String address, double salary, Date hireDate, int departmentID) {
+			String dateOfBirth, String address, int salary, String hireDate, int departmentID) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -34,6 +34,22 @@ public class Employee {
 		this.hireDate = hireDate;
 		this.departmentID = departmentID;
 	}
+	
+	public Employee(String firstName, String lastName, String password, String mobile, String email,
+			String dateOfBirth, String address, int salary, String hireDate, int departmentID) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.mobile = mobile;
+		this.email = email;
+		this.dateOfBirth = dateOfBirth;
+		this.address = address;
+		this.salary = salary;
+		this.hireDate = hireDate;
+		this.departmentID = departmentID;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -70,10 +86,10 @@ public class Employee {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Date getDateOfBirth() {
+	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 	public String getAddress() {
@@ -82,16 +98,16 @@ public class Employee {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public double getSalary() {
+	public int getSalary() {
 		return salary;
 	}
-	public void setSalary(double salary) {
+	public void setSalary(int salary) {
 		this.salary = salary;
 	}
-	public Date getHireDate() {
+	public String getHireDate() {
 		return hireDate;
 	}
-	public void setHireDate(Date hireDate) {
+	public void setHireDate(String hireDate) {
 		this.hireDate = hireDate;
 	}
 	public int getDepartmentID() {

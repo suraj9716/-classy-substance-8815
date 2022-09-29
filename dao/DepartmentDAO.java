@@ -11,5 +11,5 @@ public interface DepartmentDAO {
 	public String registerDepartment(Department department);
 	public List<Department> viewDepartment() throws DepartmentException;
 	public String updateDepartment(Department department) throws DepartmentException;
-	public String registerEmployee(Department department);
+	
 }

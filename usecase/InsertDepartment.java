@@ -11,7 +11,7 @@ public class InsertDepartment {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter new department to add");
+		System.out.println("Enter new department name to add");
 		String deptName = sc.next();
 		
 		DepartmentDAO dao = new DepartmentDaoImpl();

@@ -89,34 +89,7 @@ public class DepartmentDaoImpl implements DepartmentDAO{
 	}
 
 
-	@Override
-	public String registerEmployee(Employee employee) {
-		String message = "Not Inserted";
-		
-		try(Connection con = DButil.getConnection()) {
-			
-			con.prepareStatement("insert into employee(firstName,lastName,password,mobile,email,password,dateOfBirth,address,salary,hireDate,departmentID) values(?,?,?,?,?,?,?,?,?,?,?)");
-			
-			 ps.setString(1, employee.getFirstName());
-				ps.setString(2, employee.getLastName());
-				ps.setString(3, employee.getMobile());
-				ps.setString(4, employee.getEmail());
-				ps.setString(5, employee.getPassword());
-				ps.setString(6, employee.getDateOfBirth());
-				ps.setString(7, employee.getAddress());
-				ps.setInt(8, employee.getSalary());
-				ps.setString(9, employee.getHireDate());
-				ps.setInt(10, employee.getDepartmentID());
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		
-		return message;
-		
-		
-	}
-
+	
 
 
 
