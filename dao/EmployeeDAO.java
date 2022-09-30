@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import exception.EmployeeException;
 import model.Employee;
 
@@ -10,4 +12,5 @@ public interface EmployeeDAO {
 	public String changePassword(Employee employee)  throws EmployeeException;
 	public String updateProfile(Employee employee) throws EmployeeException;
 	public String transferDepartment(Employee employee) throws EmployeeException;
+	public List<Employee> getAllEmployee() throws EmployeeException;
 }

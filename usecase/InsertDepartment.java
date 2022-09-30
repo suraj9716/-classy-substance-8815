@@ -18,7 +18,8 @@ public class InsertDepartment {
 		
 		Department d1 = new Department();
 		d1.setName(deptName);
-		dao.registerDepartment(d1);
+	String res	= dao.registerDepartment(d1);
+	System.out.println(res);
 	}
 
 }

@@ -24,7 +24,7 @@ public class DepartmentDaoImpl implements DepartmentDAO{
 			 ps.setString(1,department.getName());
 			 int x = ps.executeUpdate();
 			 if(x>0) {
-				 System.out.println("New Deraptment Added Successfully");
+				message = "New Deraptment Added Successfully";
 			 }
 			
 		} catch (SQLException e) {
