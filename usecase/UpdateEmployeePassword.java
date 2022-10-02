@@ -13,21 +13,11 @@ import model.Employee;
 
 public class UpdateEmployeePassword {
 
-	public static void main(String[] args) {
+	public static void main(Employee emp) {
 		// TODO Auto-generated method stub
 
 		EmployeeDAO d1 = new EmployeeDaoImpl();
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter your Employee id");
-		int eid = sc.nextInt();
-//		System.out.println("Enter your Password");
-//		String pass = sc.next();
 		
-		Employee emp = new Employee();
-		
-		emp.setId(eid);
-		
-//		emp.setPassword(pass);
 		
 		try {
 			String res = d1.changePassword(emp);

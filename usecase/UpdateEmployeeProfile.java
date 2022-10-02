@@ -9,18 +9,13 @@ import model.Employee;
 
 public class UpdateEmployeeProfile {
 
-	public static void main(String[] args) {
+	public static void main(Employee emp) {
 		// TODO Auto-generated method stub
 
-		EmployeeDAO emp = new EmployeeDaoImpl();
-		Employee employee = new Employee();
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter your employee ID");
-		int id = sc.nextInt();
-		employee.setId(id);
+		EmployeeDAO emp1 = new EmployeeDaoImpl();
 		
 	    try {
-			String result =	emp.updateProfile(employee);
+			String result =	emp1.updateProfile(emp);
 			System.out.println(result);
 		} catch (EmployeeException e) {
 			// TODO Auto-generated catch block

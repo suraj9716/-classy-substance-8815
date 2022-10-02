@@ -41,7 +41,7 @@ public class DepartmentDaoImpl implements DepartmentDAO{
 		List<Department> deptList = new ArrayList<>();
 		
 		try(Connection con = DButil.getConnection()) {
-			 PreparedStatement ps =	 con.prepareStatement("select * from department");
+			PreparedStatement ps =	 con.prepareStatement("select * from department");
 			ResultSet rs =  ps.executeQuery();
 			while(rs.next()) {
 				int did = rs.getInt("id");
@@ -72,7 +72,7 @@ public class DepartmentDaoImpl implements DepartmentDAO{
 		
 		try(Connection con = DButil.getConnection()) {
 			
-		PreparedStatement ps = 	con.prepareStatement(" update department set name = ? where id = ?;");
+		PreparedStatement ps = 	con.prepareStatement("update department set name = ? where id = ?;");
 			ps.setString(1, department.getName());
 			ps.setInt(2, department.getId());
 			

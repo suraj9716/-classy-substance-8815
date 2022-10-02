@@ -12,6 +12,7 @@ import com.mysql.cj.protocol.Resultset;
 
 import exception.EmployeeException;
 import model.Employee;
+import model.EmployeeDepartmentDTO;
 import utility.DButil;
 
 public class EmployeeDaoImpl implements EmployeeDAO {
@@ -25,7 +26,7 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 			
 		PreparedStatement ps=con.prepareStatement("insert into employee(firstName,lastName,password,mobile,email,dateOfBirth,address,salary,hireDate,departmentID) values(?,?,?,?,?,?,?,?,?,?)");
 			
-			   ps.setString(1, employee.getFirstName());
+			    ps.setString(1, employee.getFirstName());
 				ps.setString(2, employee.getLastName());
 				ps.setString(3, employee.getPassword());
 				ps.setString(4, employee.getMobile());
@@ -61,7 +62,7 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 		try(Connection con = DButil.getConnection()){
 
 			
-		PreparedStatement ps = con.prepareStatement(" select * from employee where firstname = ? and password = ?");
+		PreparedStatement ps = con.prepareStatement("select * from employee where firstname = ? and password = ?");
 		ps.setString(1, employee.getFirstName());
 		ps.setString(2, employee.getPassword());
 //		firstName,lastName,password,mobile,email,dateOfBirth,address,salary,hireDate,departmentID
@@ -98,7 +99,7 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 		
 		String message = "password is incorrect";
 		try (Connection con = DButil.getConnection()){
-			PreparedStatement ps = con.prepareStatement(" select * from employee where id = ?");
+			PreparedStatement ps = con.prepareStatement("select * from employee where id = ?");
 		    ps.setInt(1, employee.getId());
 //			ps.setString(2, employee.getPassword());
 			
@@ -177,17 +178,17 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 					
 					try(Connection con1 = DButil.getConnection()) {
 						
-						System.out.println("********************************************");
-						System.out.println("1 - Change your First name");
-						System.out.println("2 - Change your Last name");
-						System.out.println("3 - Change your Password");
-						System.out.println("4 - Change your Mobile Number");
-						System.out.println("5 - Change your Email id");
-						System.out.println("6 - Change your DOB put in yyyy-mm-dd Format");
-						System.out.println("7 - Change your Address");
-						System.out.println("8 - Break");
-						System.out.println("********************************************");
-						
+						System.out.println("┌───── •✧✧• ──────────────────────────────┐\r\n"
+								+ " 1 - Change your First name  - \r\n"
+								+ " 2 - Change your Last name     \r\n"
+								+ " 3 - Change your password       \r\n"
+								+ " 4 - Change your Mobile Number       \r\n"
+								+ " 5 - Change your Email id       \r\n"
+								+ " 6 - Change your DOB put in yyyy-mm-dd Format       \r\n"
+								+ " 7 - Change your Address      \r\n"
+								+ " 8 - Exit       \r\n"
+								+ "└───── •✧✧• ──────────────────────────────┘");
+					
 						while(true) {
 							System.out.println("Enter your choice what you want to update");
 							int ch = sc.nextInt();
@@ -327,7 +328,8 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 		  							      }
 		  								}
 	                              if(ch==8) {
-	                            	  System.exit(0);
+	                            	  return "Thankyou";
+	                            	  
 	                              }
 							
 						}
@@ -452,6 +454,33 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 			throw new EmployeeException(e.getMessage());
 		}
 		
+		if(list.size()==0) {
+			throw new EmployeeException("List is empty");
+		}
+		
+		return list;
+	}
+
+	@Override
+	public List<EmployeeDepartmentDTO> viewEmployeeDepartment() throws EmployeeException {
+		List<EmployeeDepartmentDTO> list = new ArrayList<>();
+		
+		try(Connection con = DButil.getConnection()){
+			PreparedStatement ps=con.prepareStatement("select e.id, e.firstname, d.name from employee e, department d where d.id = e.departmentid");
+			
+		ResultSet rs =	ps.executeQuery();
+		while(rs.next()) {
+			EmployeeDepartmentDTO emp = new EmployeeDepartmentDTO();
+			emp.setId(rs.getInt("id"));
+			emp.setName(rs.getString("firstname"));
+			emp.setDept(rs.getString("name"));
+			list.add(emp);
+		}
+			
+			
+		}catch (SQLException e) {
+			throw new EmployeeException(e.getMessage());
+		}
 		if(list.size()==0) {
 			throw new EmployeeException("List is empty");
 		}

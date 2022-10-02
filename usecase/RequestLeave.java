@@ -7,14 +7,12 @@ import dao.EmployeeLeaveDaoImpl;
 
 public class RequestLeave {
 
-	public static void main(String[] args) {
+	public static void main(int id) {
 		// TODO Auto-generated method stub
 
 		EmployeeLeaveDAO emp = new EmployeeLeaveDaoImpl();
 		
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter employee id");
-		int id = sc.nextInt();
 		
 		System.out.println("Enter start date of leave in yyyy-mm-dd format");
 		String leavefrom = sc.next();
